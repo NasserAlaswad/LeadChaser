@@ -12,6 +12,31 @@ A small business tool that turns a quote into a priced estimate, tracks it in a 
 - Sends automatically via Twilio (SMS) or SendGrid (email) if configured — otherwise opens a tap-to-send link in the customer's phone or email app
 - Runs a daily scheduled sweep to catch every quote that's gone quiet, no manual checking required
 
+Simple Breakdown 
+
+Customer calls/texts/visits website
+          ↓
+AI receptionist answers
+          ↓
+Collects customer information
+          ↓
+Asks questions about the job
+          ↓
+Determines approximate job type
+          ↓
+Provides estimated price or range
+          ↓
+Schedules appointment
+          ↓
+Creates quote in your pipeline
+          ↓
+Sends confirmation SMS/email
+          ↓
+Sends reminders
+          ↓
+You only handle completed/complex jobs
+
+
 ## Setup
 
 ```bash
