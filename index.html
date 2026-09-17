@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quote &amp; Estimate Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="top-inner">
+      <div>
+        <div class="brand-label" id="brandLabel">QUOTE &amp; ESTIMATE PIPELINE</div>
+        <h1 id="businessName">Loading…</h1>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num" id="statOpenValue">$0</div><div class="lbl">Open pipeline</div></div>
+        <div class="stat"><div class="num" id="statDue">0</div><div class="lbl">Due for follow-up</div></div>
+        <div class="stat"><div class="num" id="statRecovered">$0</div><div class="lbl">Recovered (won)</div></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="notice">
+    <strong>How sending works:</strong> if Twilio/SendGrid credentials are set in <code>.env</code>, follow-ups send automatically on schedule. Without credentials, "Send" opens the customer's contact in your phone or email app with the message pre-loaded, one tap from sent.
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="estimate">New estimate</button>
+        <button class="tab-btn" data-tab="rates">Business config</button>
+      </div>
+
+      <div class="tab-pane active" id="pane-estimate">
+        <label for="eName">Customer name</label>
+        <input id="eName" type="text" placeholder="Jane Torres">
+
+        <div class="row2">
+          <div>
+            <label for="ePhone">Phone</label>
+            <input id="ePhone" type="text" placeholder="555-201-8890">
+          </div>
+          <div>
+            <label for="eEmail">Email</label>
+            <input id="eEmail" type="text" placeholder="jane@email.com">
+          </div>
+        </div>
+
+        <label for="eJob">Job type</label>
+        <select id="eJob"></select>
+
+        <div class="row2">
+          <div>
+            <label for="eHours">Est. hours</label>
+            <input id="eHours" type="number" step="0.5">
+          </div>
+          <div>
+            <label for="eComplexity">Complexity</label>
+            <select id="eComplexity">
+              <option value="0.9">Simple (0.9x)</option>
+              <option value="1" selected>Standard (1x)</option>
+              <option value="1.3">Complex (1.3x)</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="eMaterials">Materials cost ($, your cost)</label>
+        <input id="eMaterials" type="number" placeholder="350">
+
+        <label style="display:flex; align-items:center; gap:8px; margin-top:14px;">
+          <input type="checkbox" id="eTrip" style="width:auto;" checked> Include trip/callout fee
+        </label>
+
+        <button class="primary" id="calcBtn">Calculate estimate</button>
+        <button class="secondary" id="aiCheckBtn" style="display:none;">AI sanity-check this estimate</button>
+
+        <div id="breakdownArea"></div>
+      </div>
+
+      <div class="tab-pane" id="pane-rates">
+        <div id="configView" class="hint"></div>
+        <div class="hint">Edit <code>config/business.json</code> and restart the server to change these. Copy a different config file per client to reuse this whole project for a new business.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Pipeline</h2>
+      <div id="listArea">
+        <div class="empty">No quotes yet. Build an estimate on the left, then add it to the pipeline.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
