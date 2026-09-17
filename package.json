@@ -1,0 +1,17 @@
+{
+  "name": "quote-pipeline-tool",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3",
+    "twilio": "^5.2.2",
+    "@sendgrid/mail": "^8.1.3"
+  }
+}
